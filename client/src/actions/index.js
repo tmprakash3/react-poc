@@ -33,6 +33,7 @@ export function signUserIn(data) {
 export function signUserUp(userObj) {
     return function (dispatch) {
         // Submit email/password to server
+        // 3rd party component for http
         axios
             .post(`/signup`, userObj)
             .then(res => {
