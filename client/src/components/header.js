@@ -8,17 +8,17 @@ class Header extends Component {
         if (this.props.authenticated){
             return (
                 <li className="nav-item">
-                    <NavLink className="nav-link" to="/signout">Sign out</NavLink>
+                    <NavLink className="nav-link" to="/signout">Log out</NavLink>
                 </li>
             )
         }else{
             return (
                 [
-                    <li className="nav-item" key="1">
-                        <NavLink to="/signin" className="nav-link">Sign in</NavLink>
-                    </li>,
                     <li className="nav-item" key="2">
-                        <NavLink to="/signup" className="nav-link">Sign Up</NavLink>
+                        <NavLink to="/signin" className="nav-link">Login</NavLink>
+                    </li>,
+                    <li className="nav-item" key="3">
+                        <NavLink to="/signup" className="nav-link">Register</NavLink>
                     </li>
                 ]
             )
@@ -27,14 +27,16 @@ class Header extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
-                <NavLink className="navbar-brand" to="/">MERN</NavLink>
+                <NavLink className="navbar-brand" to="/">
+                    <img src= '../../assets/images/imageload.jpg' />
+                </NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/public">Public</NavLink>
+                            <NavLink className="nav-link" to="/home">Home</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/account">Account</NavLink>

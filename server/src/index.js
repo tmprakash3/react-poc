@@ -11,7 +11,7 @@ import Authentication from './api/authentication'
 import UserRouter from './user/router'
 
 if(!process.env.JWT_SECRET) {
-    const err = new Error('No JWT_SECRET in env variable, check instructions: https://github.com/amazingandyyy/mern#prepare-your-secret');
+    const err = new Error('No JWT_SECRET in env variable, check instructions: https://github.com/amazingandyyy/mern#0a6b944d-d2fb-46fc-a85e-0295c986cd9f');
     console.error(err);
 }
 

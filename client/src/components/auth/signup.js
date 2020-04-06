@@ -29,7 +29,7 @@ const Signup = (props) => {
         <CenterCard363>
             <div className='card'>
             <h4 className="card-header">
-                Sign Up
+                Register
             </h4>
             <div className="card-body">
             <form onSubmit={onSubmit}>
@@ -99,7 +99,7 @@ const Signup = (props) => {
                         type="submit"
                         className="btn btn-lg btn-light btn-block"
                         disabled={!dirty || submitting}>
-                        Sign Up
+                        Register
                     </button>
                 </div>
             </form>

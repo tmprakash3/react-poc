@@ -32,7 +32,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component= {Home} />
-          <Route path="/public" component= {Public} />
+          <Route path="/home" component= {Public} />
           <Route path="/account" component= {RequireAuth(Account)} />
           <Route path="/signin" component= {Signin} />
           <Route path="/signup" component= {Signup} />
