@@ -2,16 +2,17 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { NavLink } from 'react-router-dom';
-// import imageload from './assets/images/imageload.jpg';
+import Logo from '../assets/images/imageload.jpg';
+import './header.scss';
 
 class Header extends Component {
     renderSignButton(){
         if (this.props.authenticated){
             return ([
-                <li className="nav-item">
+                <li className="nav-item" key="0">
                     <NavLink className="nav-link" to="/account">My Account</NavLink>
                 </li>,
-                <li className="nav-item">
+                <li className="nav-item" key="1" >
                     <NavLink className="nav-link" to="/signout">Log out</NavLink>
                 </li>
             ])
@@ -30,10 +31,10 @@ class Header extends Component {
     }
     render() {
         return (
-            <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <NavLink className="navbar-brand" to="/">
-                    {/* <img src={imageload} />                     */}
-                    React POC
+                    <img src={Logo} class="logo-img" />                    
+                    {/* React POC */}
                 </NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

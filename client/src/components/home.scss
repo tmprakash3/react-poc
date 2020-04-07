@@ -1,0 +1,33 @@
+.bannerImage {
+    height: 350px;
+    width: 100%;
+    background-image: url('/assets/images/23-04-2019-BAU-girl-couple-blue-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 60% 0%;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding-top: 32%;
+}
+.main-message {
+    position: absolute;
+    top: 15%;
+    left: 6%;
+}
+.main-message img {
+    width: 35vw;
+    min-width: 500px;
+    height: 100%!important;
+}
+.main-headline {
+    background: none;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    padding: 20px 20px 0px;
+    text-align: center;
+}
