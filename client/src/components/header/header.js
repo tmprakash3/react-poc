@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import { NavLink } from 'react-router-dom';
-import Logo from '../assets/images/imageload.jpg';
+import Logo from '../../assets/images/imageload.jpg';
 import './header.scss';
 
 class Header extends Component {
@@ -33,7 +33,7 @@ class Header extends Component {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <NavLink className="navbar-brand" to="/">
-                    <img src={Logo} class="logo-img" />                    
+                    <img src={Logo} className="logo-img" />                    
                     {/* React POC */}
                 </NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

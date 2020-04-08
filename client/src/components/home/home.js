@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import msgImg from '../assets/images/shoe-size-no-hash-white.svg'
+import msgImg from '../../assets/images/shoe-size-no-hash-white.svg'
 import './home.scss';
+import sidenav from '../sidenav/sidenav';
 
 export default class App extends Component {
   render() {

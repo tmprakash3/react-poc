@@ -6,9 +6,9 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
 import App from './components/app';
-import Home from './components/home';
+import Home from './components/home/home';
 import Public from './components/public';
-import Account from './components/account';
+import Account from './components/accounts/account';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout'
