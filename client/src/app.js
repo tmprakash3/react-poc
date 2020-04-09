@@ -11,7 +11,8 @@ import Public from './components/public';
 import Account from './components/accounts/account';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
-import Signout from './components/auth/signout'
+import Signout from './components/auth/signout';
+import Orders from './components/orders/orders';
 import RequireAuth from './components/auth/require_auth';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -39,6 +40,7 @@ ReactDOM.render(
           <Route path="/signin" component= {Signin} />
           <Route path="/signup" component= {Signup} />
           <Route path="/signout" component= {Signout} />
+          <Route path="/orders" component= {Orders} />
         </Switch>
       </App>
     </HashRouter>
