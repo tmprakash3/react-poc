@@ -3,7 +3,7 @@ import UserModel from '../user/model';
 
 export default {
     signup : (req, res, next) => {
-        const { email, password, firstName, lastName } = req.body;
+        const { email, password, firstName, lastName, mobile,eventmangament } = req.body;
     
         if (!email || !password) {
             return res
@@ -26,7 +26,11 @@ export default {
                         last: lastName
                     },
                     email: email,
-                    password: password
+                    password: password,
+                    phone:{
+                        number: mobile
+                    },
+                    eventmangament:eventmangament
                 })
     
                 user.save(function (err, savedUser) {

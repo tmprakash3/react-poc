@@ -4,6 +4,7 @@ const forms = {};
 const useForm = (name, config) => {
   forms[name] = useSpecificForm(name, config)
   return forms[name];
+  //alert(forms[name])
 }
 
 const useSpecificForm = (name, {initialValues={},debug=false, callback=(inputs)=>console.log('form submitted', inputs)}) => {
@@ -19,13 +20,20 @@ const useSpecificForm = (name, {initialValues={},debug=false, callback=(inputs)=
   }
   
   const onChange = (event) => {
+    
     event.persist();
     setDirty(true);
     setSubmitting(false);
     let currentInputs = inputs;
     setInputs(inputs => {
+      //console.log(event.target.checked)
+      if(event.target.name==="eventmangament"){
+        currentInputs={...inputs,eventmangament:event.target.checked}
+        return currentInputs
+      }
       currentInputs = {...inputs, [event.target.name]: event.target.value};
       if(isEquivalent(currentInputs, initialValues)) setDirty(false);
+      //alert(JSON.stringify(currentInputs))
       return currentInputs
     });
     if(debug) console.log({name, event: 'onChange', field: event.target.name, value: event.target.value, currentInputs});

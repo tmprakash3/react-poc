@@ -8,11 +8,15 @@ const Signup = (props) => {
     const [errMsg, setErrorMsg] = useState('');
     const options = {
         initialValues: {
-            'firstName': 'a',
-            'lastName': 'a',
-            'email': 'aa@mail.com',
-            'password': 'aa',
-            'password2': 'a'
+            'firstName': '',
+            'lastName': '',
+            'email': '',
+            'password': '',
+            'password2': '',
+            'mobile':'',
+            'eventmangament':false,
+            'cateringservices':false
+           
         },
         callback: () => {
             if (inputs.password == inputs.password2) {
@@ -34,6 +38,8 @@ const Signup = (props) => {
             <div className="card-body">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
+                <div class="row">
+                <div class="col">
                     <label>First name:</label>
                     <input
                         name="firstName"
@@ -43,8 +49,9 @@ const Signup = (props) => {
                         className="form-control form-control-lg"
                         placeholder="First Name"
                         required/>
-                </div>
-                <div className="form-group">
+                        
+                    </div>
+                    <div  class="col">
                     <label>Last name:</label>
                     <input
                         name="lastName"
@@ -54,9 +61,13 @@ const Signup = (props) => {
                         className="form-control form-control-lg"
                         placeholder="Last Name"
                         required/>
+                        </div>
+                     </div>   
                 </div>
                 <div className="form-group">
-                    <label>Email:</label>
+                <div class="row">
+                <div class="col">
+                <label>Email:</label>
                     <input
                         name="email"
                         value={inputs.email}
@@ -65,9 +76,25 @@ const Signup = (props) => {
                         className="form-control form-control-lg"
                         placeholder="sample@email.com"
                         required/>
+                        
+                    </div>
+                    <div  class="col">
+                    <label>Mobile Number:</label>
+                    <input 
+                        type='number'
+                        name="mobile"
+                        value={inputs.mobile}
+                        onChange={onChange}
+                        className="form-control form-control-lg"
+                        placeholder="Mobile Number"
+                        required/>
+                        </div>
+                     </div>   
                 </div>
                 <div className="form-group">
-                    <label>Password:</label>
+                <div class="row">
+                <div class="col">
+                <label>Password:</label>
                     <input
                         type='password'
                         name="password"
@@ -77,9 +104,9 @@ const Signup = (props) => {
                         placeholder="your password"
                         required
                     />
-                </div>
-                
-                <div className="form-group">
+                    </div>
+                    <div class="col">
+                    <label>Comfirm Password:</label>
                     <label>Comfirm Password:</label>
                     <input
                         type='password'
@@ -89,7 +116,31 @@ const Signup = (props) => {
                         className="form-control form-control-lg"
                         placeholder="your password again"
                         required/>
+                    </div>
+                    </div>
                 </div>
+                <div className="form-group">
+                <div class="row">
+                <div class="col">
+               
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' value={inputs.eventmangament} onChange={onChange}/>
+  <label class="form-check-label" for="inlineCheckbox1">Event management</label>
+
+</div>
+<div class="col">
+
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"/>
+  <label class="form-check-label" for="inlineCheckbox2">catering services</label>
+
+</div>
+<div class="col">
+
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" />
+  <label class="form-check-label" for="inlineCheckbox3">food service </label>
+</div>
+
+</div>
+</div>
                 {errMsg && <div className="alert alert-warning">
                     <strong>Oops!
                     </strong> {errMsg}
