@@ -8,6 +8,7 @@ import './header.scss';
 class Header extends Component {
     renderSignButton(){
         if (this.props.authenticated){
+            
             return ([
                 <li className="nav-item" key="0">
                     <NavLink className="nav-link" to="/account">My Account</NavLink>

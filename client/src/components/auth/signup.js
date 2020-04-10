@@ -38,8 +38,8 @@ const Signup = (props) => {
             <div className="card-body">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                <div class="row">
-                <div class="col">
+                <div className="row">
+                <div className="col">
                     <label>First name:</label>
                     <input
                         name="firstName"
@@ -51,7 +51,7 @@ const Signup = (props) => {
                         required/>
                         
                     </div>
-                    <div  class="col">
+                    <div  className="col">
                     <label>Last name:</label>
                     <input
                         name="lastName"
@@ -65,8 +65,8 @@ const Signup = (props) => {
                      </div>   
                 </div>
                 <div className="form-group">
-                <div class="row">
-                <div class="col">
+                <div className="row">
+                <div className="col">
                 <label>Email:</label>
                     <input
                         name="email"
@@ -78,7 +78,7 @@ const Signup = (props) => {
                         required/>
                         
                     </div>
-                    <div  class="col">
+                    <div  className="col">
                     <label>Mobile Number:</label>
                     <input 
                         type='number'
@@ -92,8 +92,8 @@ const Signup = (props) => {
                      </div>   
                 </div>
                 <div className="form-group">
-                <div class="row">
-                <div class="col">
+                <div className="row">
+                <div className="col">
                 <label>Password:</label>
                     <input
                         type='password'
@@ -105,9 +105,9 @@ const Signup = (props) => {
                         required
                     />
                     </div>
-                    <div class="col">
-                    <label>Comfirm Password:</label>
-                    <label>Comfirm Password:</label>
+                    <div className="col">
+                    <label>Confirm Password:</label>
+                    {/* <label>Comfirm Password:</label> */}
                     <input
                         type='password'
                         name="password2"
@@ -120,23 +120,23 @@ const Signup = (props) => {
                     </div>
                 </div>
                 <div className="form-group">
-                <div class="row">
-                <div class="col">
+                <div className="row">
+                <div className="col">
                
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' value={inputs.eventmangament} onChange={onChange}/>
-  <label class="form-check-label" for="inlineCheckbox1">Event management</label>
+  <input className="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' value={inputs.eventmangament} onChange={onChange}/>
+  <label className="form-check-label" for="inlineCheckbox1">Event management</label>
 
 </div>
-<div class="col">
+<div className="col">
 
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"/>
-  <label class="form-check-label" for="inlineCheckbox2">catering services</label>
+  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"/>
+  <label className="form-check-label" for="inlineCheckbox2">catering services</label>
 
 </div>
-<div class="col">
+<div className="col">
 
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" />
-  <label class="form-check-label" for="inlineCheckbox3">food service </label>
+  <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" />
+  <label className="form-check-label" for="inlineCheckbox3">food service </label>
 </div>
 
 </div>

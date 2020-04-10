@@ -9,5 +9,7 @@ module.exports = {
   jwt_secret: process.env.JWT_SECRET || 'unsafe_jwt_secret',
   mongoose: {
     uri: process.env.MONGODB_URI || 'mongodb://localhost/mern'
+    // mongodb://testAdmin:<password>@cluster0-zxaei.mongodb.net/test?retryWrites=true&w=majority
+
   },
 }
