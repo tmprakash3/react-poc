@@ -4,6 +4,7 @@ import {
     UNAUTH_USER,
     AUTH_ERROR
 } from './types';
+import { func } from 'prop-types';
 const ROOT_URL = process.env.API_URI || 'http://localhost:8000';
 
 axios.defaults.baseURL = ROOT_URL;
@@ -53,6 +54,16 @@ export function signUserOut() {
     return function (dispatch) {
         dispatch({type: UNAUTH_USER})
         localStorage.removeItem('auth_jwt_token');
+    }
+}
+
+export const verifyUser = () => dispatch=> {
+    const jwtToken = localStorage.getItem('auth_jwt_token');
+    if(jwtToken===null) {
+        return false;
+    }
+    else {
+        return true;
     }
 }
 

@@ -13,7 +13,7 @@ import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
 import Orders from './components/orders/orders';
-import RequireAuth from './components/auth/require_auth';
+import ProtectRouter from './components/auth/require_auth';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
 
@@ -36,7 +36,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component= {Home} />
           <Route path="/home" component= {Public} />
-          <Route path="/account" component= {RequireAuth(Account)} />
+          <ProtectRouter path="/account" component= {Account} />
           <Route path="/signin" component= {Signin} />
           <Route path="/signup" component= {Signup} />
           <Route path="/signout" component= {Signout} />

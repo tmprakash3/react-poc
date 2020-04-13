@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-export default function(ComposedComponent) {
-  class Authentication extends Component {
-    componentDidMount() {
-      if (!this.props.authenticated) {
-        this.context.router.history.push('/signin');
-      }
-    }
+import { verifyUser } from '../../actions/index';
 
-    render() {
-      return <ComposedComponent {...this.props} />
-    }
-  }
+export default function ProtectRouter({ component: Component }) {
+    const dispatch = useDispatch();
+    return (
+        <div>
+            <Route render={() => (
+                dispatch(verifyUser()) === true ? <Component /> : <Redirect to="/" />
+            )}>
 
-  function mapStateToProps({auth}) {
-    return { authenticated: auth.authenticated };
-  }
-  Authentication.contextTypes = {
-    router: PropTypes.object
-  }
+            </Route>
 
-  return connect(mapStateToProps)(Authentication);
+        </div>
+    )
 }
