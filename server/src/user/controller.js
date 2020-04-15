@@ -13,7 +13,11 @@ export default {
                 phone:{
 
                     number:req.body.mobile
-                }
+                },
+                eventmangament:req.body.eventmangament,
+                cateringservices:req.body.cateringservices,
+                foodservice:req.body.foodservice
+               
             };
             delete newProfile.email;
             delete newProfile.password;
