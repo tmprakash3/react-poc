@@ -148,13 +148,13 @@ const Account = () => {
           </div>
           <div className="col">
 
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='eventmangament' checked={inputs.cateringservices} value={inputs.cateringservices} onChange={onChange} />
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='cateringservices' checked={inputs.cateringservices} value={inputs.cateringservices} onChange={onChange} />
             <label className="form-check-label" for="inlineCheckbox2">catering services</label>
 
           </div>
           <div className="col">
 
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" name='eventmangament' checked={inputs.foodservice} value={inputs.foodservice} onChange={onChange} />
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" name='foodservice' checked={inputs.foodservice} value={inputs.foodservice} onChange={onChange} />
             <label className="form-check-label" for="inlineCheckbox3">food service </label>
           </div>
 
