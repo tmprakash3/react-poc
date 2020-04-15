@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../../use-form-react';
-
+import {connect} from 'react-redux';
 import {signUserIn} from '../../actions';
 import CenterCard363 from '../centerCard363';
 
 const Signin = (props) => {
+    const dispatch = useDispatch()
     const options = {
         initialValues: {
             'email': '',
@@ -13,7 +14,7 @@ const Signin = (props) => {
         },
         callback: () => {
             console.log('works!', inputs)
-            props.signUserIn(inputs);
+            dispatch(signUserIn(inputs));
         },
         debug: false
     }

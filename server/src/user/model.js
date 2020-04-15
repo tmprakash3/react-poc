@@ -27,8 +27,14 @@ const Schema = new mongoose.Schema({
         }
     },
     eventmangament: {
-        type: String,
+        type: Boolean,
         
+    },
+    cateringservices:{
+        type: Boolean
+    },
+    foodservice:{
+        type: Boolean
     }
 
 })
