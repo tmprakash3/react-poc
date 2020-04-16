@@ -31,6 +31,14 @@ const useSpecificForm = (name, {initialValues={},debug=false, callback=(inputs)=
         currentInputs={...inputs,eventmangament:event.target.checked}
         return currentInputs
       }
+      if(event.target.name==="cateringservices"){
+        currentInputs={...inputs,cateringservices:event.target.checked}
+        return currentInputs
+      }
+      if(event.target.name==="foodservice"){
+        currentInputs={...inputs,foodservice:event.target.checked}
+        return currentInputs
+      }
       currentInputs = {...inputs, [event.target.name]: event.target.value};
       if(isEquivalent(currentInputs, initialValues)) setDirty(false);
       //alert(JSON.stringify(currentInputs))

@@ -15,7 +15,8 @@ const Signup = (props) => {
             'password2': '',
             'mobile':'',
             'eventmangament':false,
-            'cateringservices':false
+            'cateringservices':false,
+            'foodservice':false
            
         },
         callback: () => {
@@ -129,13 +130,13 @@ const Signup = (props) => {
 </div>
 <div className="col">
 
-  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"/>
+  <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='cateringservices' value={inputs.cateringservices} onChange={onChange}/>
   <label className="form-check-label" for="inlineCheckbox2">catering services</label>
 
 </div>
 <div className="col">
 
-  <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" />
+  <input className="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" name='foodservice' value={inputs.foodservice} onChange={onChange}/>
   <label className="form-check-label" for="inlineCheckbox3">food service </label>
 </div>
 

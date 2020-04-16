@@ -30,7 +30,9 @@ export default {
                     phone:{
                         number: mobile
                     },
-                    eventmangament:eventmangament
+                    eventmangament:eventmangament,
+                    cateringservices:cateringservices,
+                    foodservice:foodservice
                 })
     
                 user.save(function (err, savedUser) {

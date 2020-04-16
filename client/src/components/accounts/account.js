@@ -13,7 +13,11 @@ const Account = () => {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      mobile: '',
+      eventmangament: false,
+      cateringservices: false,
+      foodservice:false
     },
     callback: () => {
       updateUserProfile(inputs)
@@ -24,10 +28,15 @@ const Account = () => {
   const tryConnect = () => axios.get(`/auth-ping`).then(r => setStatus(r.data));
   const getUserProfile = () => axios.get(`/user/profile`).then(r => {
     setProfile(r.data)
+    console.log(r.data)
     setInputs({
       firstName: r.data.name.first,
       lastName: r.data.name.last,
-      email: r.data.email
+      email: r.data.email,
+      mobile: r.data.phone.number,
+      eventmangament:r.data.eventmangament,
+      cateringservices:r.data.cateringservices,
+      foodservice:r.data.foodservice
     })
     setErrMsg();
   });
@@ -48,6 +57,16 @@ const Account = () => {
     reset();
     getUserProfile();
   }
+  const isChecked = () => {
+    alert(input.eventmangament)
+    if(inputs.eventmangament===true) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+  
   const renderButtons = () => {
     if (editting) {
       return (<div className="form-group">
@@ -90,19 +109,55 @@ const Account = () => {
             />
           </div>
         </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            disabled
-            readOnly
-            type='email'
-            name="email"
-            onChange={onChange}
-            value={inputs.email}
-            className="form-control form-control-lg"
-            placeholder="sample@email.com"
-            required
-          />
+        <div className="row">
+          <div className="form-group col-md-6">
+            <label>Email:</label>
+            <input
+              disabled
+              readOnly
+              type='email'
+              name="email"
+              onChange={onChange}
+              value={inputs.email}
+              className="form-control form-control-lg"
+              placeholder="sample@email.com"
+              required
+            />
+          </div>
+          <div className="form-group col-md-6">
+            <label>Mobile Number:</label>
+            <input
+
+              disabled={!editting}
+              type='number'
+              name="mobile"
+              onChange={onChange}
+              value={inputs.mobile}
+              className="form-control form-control-lg"
+              placeholder="mobile number"
+              required
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' checked={inputs.eventmangament} value={inputs.eventmangament} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox1">Event management</label>
+
+          </div>
+          <div className="col">
+
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='cateringservices' checked={inputs.cateringservices} value={inputs.cateringservices} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox2">catering services</label>
+
+          </div>
+          <div className="col">
+
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" name='foodservice' checked={inputs.foodservice} value={inputs.foodservice} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox3">food service </label>
+          </div>
+
         </div>
         {dirty && <div className="form-group">
           <label>Password:</label>

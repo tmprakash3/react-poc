@@ -9,10 +9,17 @@ export default {
                 name: {
                     first: req.body.firstName, 
                     last: req.body.lastName
-                }
+                },
+                phone:{
+
+                    number:req.body.mobile
+                },
+                eventmangament:req.body.eventmangament,
+                cateringservices:req.body.cateringservices,
+                foodservice:req.body.foodservice
+               
             };
             delete newProfile.email;
-            delete newProfile.phone;
             delete newProfile.password;
             
             UserModel.findByIdAndUpdate(userId, newProfile, {new: true})

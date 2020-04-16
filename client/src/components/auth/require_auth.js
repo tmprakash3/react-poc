@@ -9,7 +9,7 @@ export default function ProtectRouter({ component: Component }) {
     return (
         <div>
             <Route render={() => (
-                dispatch(verifyUser()) === true ? <Component /> : <Redirect to="/" />
+                dispatch(verifyUser()) === true ? <Component /> : <Redirect to="/signin" />
             )}>
             </Route>
 
