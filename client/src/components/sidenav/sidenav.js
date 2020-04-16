@@ -47,8 +47,8 @@ class Sidenav extends Component {
                 imgUrl: 'fas fa-calendar-alt'
             },
         ];
-        const listItems = menuItems.map((nav) => 
-            <li key={nav.id}>
+        const listItems = menuItems.map((nav, index) => 
+            <li key={nav.title} id={nav.id}>
                 <NavLink to={nav.url} className="nav-link"><i className={nav.imgUrl}></i><span className='ml-8'>{nav.title}</span></NavLink>
             </li>);
         return (

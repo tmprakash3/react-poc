@@ -11,7 +11,6 @@ export default function ProtectRouter({ component: Component }) {
             <Route render={() => (
                 dispatch(verifyUser()) === true ? <Component /> : <Redirect to="/" />
             )}>
-
             </Route>
 
         </div>

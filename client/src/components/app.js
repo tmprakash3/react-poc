@@ -28,15 +28,16 @@ class App extends React.Component {
     }
 
     render() {
+      // console.log(this.props);
       return (
         <div>
           <Header />
           <div className='container-fluid'>
             <div className="row">
-              <div className="col-md-3 left-content">
+              <div className="col-md-3 left-content" style={{display: this.props.authenticated ? 'block': 'none'}}>
                {this.renderSideNav()}
               </div>
-              <div className="col-md-9 right-content">
+              <div className={this.props.authenticated ? 'col-md-9 right-content': 'col-md-12'}>
                 {this.props.children}
               </div>
             </div>
