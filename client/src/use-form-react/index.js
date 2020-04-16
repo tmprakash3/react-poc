@@ -41,7 +41,7 @@ const useSpecificForm = (name, {initialValues={},debug=false, callback=(inputs)=
       }
       currentInputs = {...inputs, [event.target.name]: event.target.value};
       if(isEquivalent(currentInputs, initialValues)) setDirty(false);
-      //alert(JSON.stringify(currentInputs))
+     
       return currentInputs
     });
     if(debug) console.log({name, event: 'onChange', field: event.target.name, value: event.target.value, currentInputs});

@@ -5,10 +5,11 @@ import useForm from '../../use-form-react';
 
 const Account = () => {
   const [editting, setEditting] = useState(false);
+  const [passwordEditting, setPasswordEditting] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [status, setStatus] = useState('');
   const [profile, setProfile] = useState({});
-  const options = {
+  let options = {
     initialValues: {
       firstName: '',
       lastName: '',
@@ -17,13 +18,16 @@ const Account = () => {
       mobile: '',
       eventmangament: false,
       cateringservices: false,
-      foodservice:false
+      foodservice: false,
+      oldPassword: '',
+      newPassword: ''
     },
     callback: () => {
-      updateUserProfile(inputs)
+      updateUserProfile(inputs);
     },
     debug: false
   }
+
   const { setInputs, onSubmit, onChange, inputs, dirty, reset } = useForm('AdvanceForm', options);
   const tryConnect = () => axios.get(`/auth-ping`).then(r => setStatus(r.data));
   const getUserProfile = () => axios.get(`/user/profile`).then(r => {
@@ -34,16 +38,29 @@ const Account = () => {
       lastName: r.data.name.last,
       email: r.data.email,
       mobile: r.data.phone.number,
-      eventmangament:r.data.eventmangament,
-      cateringservices:r.data.cateringservices,
-      foodservice:r.data.foodservice
+      eventmangament: r.data.eventmangament,
+      cateringservices: r.data.cateringservices,
+      foodservice: r.data.foodservice
     })
     setErrMsg();
   });
   const updateUserProfile = () => {
-    axios.post(`/user/profile`, inputs)
-      .then(() => cancelForm())
-      .catch(e => setErrMsg(`${e.response.data}. Please try it again.`));
+    console.log("asjkgklasdgnklaskgkasklgksadglsjdsakgblks");
+    if (inputs.newPassword && inputs.newPassword !== '' && inputs.oldPassword && inputs.oldPassword !== '') {
+      let passwordChangeObj = {
+        newPassword: inputs.newPassword,
+        oldPassword: inputs.oldPassword
+      }
+      console.log(passwordChangeObj)
+    }
+    else {
+      delete inputs.oldPassword;
+      delete inputs.newPassword;
+      axios.post(`/user/profile`, inputs)
+        .then(() => cancelForm())
+        .catch(e => setErrMsg(`${e.response.data}. Please try it again.`));
+    }
+
   }
   useEffect(() => {
     tryConnect();
@@ -52,21 +69,20 @@ const Account = () => {
   const switchEditting = () => {
     setEditting(!editting)
   }
+  const switchPasswordEditting = () => {
+    setPasswordEditting(!passwordEditting)
+  }
   const cancelForm = () => {
     setEditting(false)
     reset();
     getUserProfile();
   }
-  const isChecked = () => {
-    alert(input.eventmangament)
-    if(inputs.eventmangament===true) {
-      return true
-    }
-    else {
-      return false
-    }
+  const cancelPasswordForm = () => {
+    setPasswordEditting(false);
+    reset();
+    getUserProfile();
   }
-  
+
   const renderButtons = () => {
     if (editting) {
       return (<div className="form-group">
@@ -75,6 +91,16 @@ const Account = () => {
       </div>)
     } else {
       return (<button className="btn btn-primary btn-lg btn-block" onClick={switchEditting}>Update Information</button>)
+    }
+  }
+  const renderPasswordButtons = () => {
+    if (passwordEditting) {
+      return (<div className="form-group">
+        <button disabled={!dirty} type="submit" className="btn-lg btn btn-light btn-block">Save Change</button>
+        <button className="btn-lg btn btn-secondary btn-block" onClick={cancelPasswordForm}>Cancel</button>
+      </div>)
+    } else {
+      return (<button className="btn btn-primary btn-lg btn-block" onClick={switchPasswordEditting}>Update Password</button>)
     }
   }
   const renderProfileForm = () => {
@@ -179,6 +205,43 @@ const Account = () => {
         </div>
       </form>);
   }
+  const updatePassword = () => {
+    return (
+      <form onSubmit={onSubmit}>
+
+        <div className="form-group col-md-6">
+          <label>Old Password:</label>
+          <input
+            type='test'
+            name="oldPassword"
+            onChange={onChange}
+            value={inputs.oldPassword}
+            className="form-control form-control-lg"
+            placeholder="Old Password"
+            required
+            disabled={!passwordEditting}
+          />
+        </div>
+        <div className="form-group col-md-6">
+          <label>New Password:</label>
+          <input
+            type='text'
+            name="newPassword"
+            onChange={onChange}
+            value={inputs.newPassword}
+            className="form-control form-control-lg"
+            placeholder="New Password"
+            required
+            disabled={!passwordEditting}
+          />
+        </div>
+        <div style={{ 'paddingTop': '30px' }}>
+          {renderPasswordButtons()}
+        </div>
+
+      </form>
+    )
+  }
   return (
     <CenterCard363>
       <div className='card border-secondary'>
@@ -188,6 +251,16 @@ const Account = () => {
         <div className='card-body'>
           <p className="text-muted">Server status: {status} ☀</p>
           {profile && renderProfileForm()}
+        </div>
+      </div>
+      <br />
+      <div className='card border-secondary'>
+        <h4 className="card-header">
+          Update Password
+        </h4>
+        <div className='card-body'>
+          {updatePassword()}
+
         </div>
       </div>
     </CenterCard363>
