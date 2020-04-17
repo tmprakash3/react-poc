@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CenterCard363 from '../centerCard363';
 import useForm from '../../use-form-react';
-
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import '../app.scss';
 const Account = () => {
   const [editting, setEditting] = useState(false);
   const [passwordEditting, setPasswordEditting] = useState(false);
@@ -167,21 +171,21 @@ const Account = () => {
         </div>
         <div className="row">
           <div className="col">
-
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' checked={inputs.eventmangament} value={inputs.eventmangament} onChange={onChange} />
-            <label className="form-check-label" for="inlineCheckbox1">Event management</label>
-
-          </div>
-          <div className="col">
-
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='cateringservices' checked={inputs.cateringservices} value={inputs.cateringservices} onChange={onChange} />
-            <label className="form-check-label" for="inlineCheckbox2">catering services</label>
+            <FormControlLabel control={<Checkbox name="eventmangament" checked={inputs.eventmangament} onChange={onChange} color="primary" />} id="inlineCheckbox1" label="Event Management" />
+            {/* <input className="form-check-input" type="checkbox" id="inlineCheckbox1" name='eventmangament' checked={inputs.eventmangament} value={inputs.eventmangament} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox1">Event management</label> */}
 
           </div>
           <div className="col">
+            <FormControlLabel control={<Checkbox name="cateringservices" checked={inputs.cateringservices} onChange={onChange} color="primary" />} id="inlineCheckbox2" label="Catering Services" />
+            {/* <input className="form-check-input" type="checkbox" id="inlineCheckbox2" name='cateringservices' checked={inputs.cateringservices} value={inputs.cateringservices} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox2">catering services</label> */}
 
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox3" name='foodservice' checked={inputs.foodservice} value={inputs.foodservice} onChange={onChange} />
-            <label className="form-check-label" for="inlineCheckbox3">food service </label>
+          </div>
+          <div className="col">
+            <FormControlLabel control={<Checkbox name="foodservice" checked={inputs.foodservice} onChange={onChange} color="primary" />} id="inlineCheckbox3" label="Food Services" />
+            {/* <input className="form-check-input" type="checkbox" id="inlineCheckbox3" name='foodservice' checked={inputs.foodservice} value={inputs.foodservice} onChange={onChange} />
+            <label className="form-check-label" for="inlineCheckbox3">food service </label> */}
           </div>
 
         </div>
@@ -209,7 +213,7 @@ const Account = () => {
     return (
       <form onSubmit={onSubmit}>
 
-        <div className="form-group col-md-6">
+        <div className="form-group col-md-12">
           <label>Old Password:</label>
           <input
             type='test'
@@ -222,7 +226,7 @@ const Account = () => {
             disabled={!passwordEditting}
           />
         </div>
-        <div className="form-group col-md-6">
+        <div className="form-group col-md-12">
           <label>New Password:</label>
           <input
             type='text'
@@ -243,27 +247,36 @@ const Account = () => {
     )
   }
   return (
-    <CenterCard363>
-      <div className='card border-secondary'>
-        <h4 className="card-header">
-          Account
+    <div className="root">
+      <Grid container spacing={3} style={{margin: 0}}>
+        <Grid item xs={12} md={6}>
+        <Card className>
+          <div className='card'>
+            <h4 className="card-header">
+              Account
       </h4>
-        <div className='card-body'>
-          <p className="text-muted">Server status: {status} ☀</p>
-          {profile && renderProfileForm()}
-        </div>
-      </div>
-      <br />
-      <div className='card border-secondary'>
-        <h4 className="card-header">
-          Update Password
+            <div className='card-body'>
+              <p className="text-muted">Server status: {status} ☀</p>
+              {profile && renderProfileForm()}
+            </div>
+          </div>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <Card className>
+          <div className='card'>
+            <h4 className="card-header">
+              Update Password
         </h4>
-        <div className='card-body'>
-          {updatePassword()}
+            <div className='card-body'>
+              {updatePassword()}
 
-        </div>
-      </div>
-    </CenterCard363>
+            </div>
+          </div>
+          </Card>
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 

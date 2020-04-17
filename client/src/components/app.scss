@@ -9,3 +9,12 @@
     max-width: 100%;
     flex: 0 0 84%;
   }
+  .form-control-lg, .input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn {
+      font-size: 1rem !important;
+  }
+  .root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+  }
