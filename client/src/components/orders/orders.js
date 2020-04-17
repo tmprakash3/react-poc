@@ -39,7 +39,7 @@ class Orders extends Component {
     render() {
         const { isLoading, orders, error } = this.state;
         return (
-            <Grid container direction="column" className="card">
+            <Grid container direction="column" className="order-card">
                 {error ? <p>{error.message} </p> : null}
                 {!isLoading ? (
                     orders.map(user => {
