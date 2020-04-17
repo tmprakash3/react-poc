@@ -36,7 +36,7 @@ app.post('/signup', Authentication.signup);
 app.post('/signin', Authentication.signin);
 app.get('/auth-ping', Middlewares.loginRequired, (req, res) => res.send('connected'));
 app.use('/user', Middlewares.loginRequired, UserRouter);
-app.use('/orders', Middlewares.loginRequired, OrderRouter)
+app.use('/orders', OrderRouter)
 
 app.use((err, req, res, next) => {
     console.log('Error:', err.message);

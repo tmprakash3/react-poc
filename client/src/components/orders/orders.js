@@ -15,7 +15,7 @@ class Orders extends Component {
     }
 
     fetchProducts() {
-        fetch('http://www.json-generator.com/api/json/get/bVkFRkdJQi?indent=2')
+        fetch('http://localhost:8000/')
             .then(response => response.json())
             .then(data => this.setState({
                 orders: data,

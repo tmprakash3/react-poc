@@ -1,31 +1,17 @@
-
+const fs = require('fs');
+const dataPath = require('./orders.json');
+console.log(dataPath);
 
 export default {
-    updateProfile: (req, res, next) => {
-        req.user.comparedPassword(req.body.password, (err, good) => {
-            if (err || !good) return res.status(401).send(err || 'Incorrect Password')
-            const userId = req.user._id;
-            const newProfile = {
-                name: {
-                    first: req.body.firstName, 
-                    last: req.body.lastName
-                },
-                phone:{
+    getAllOrders: function(req, res) {
+        console.log("getAllOrders called::");
+        fs.readFile(dataPath, 'utf8', (err, data) => {
+            if(err) {
+                console.log(err);
+                throw err
+            }
+            res.send(JSON.parse(data))
+        }) 
 
-                    number:req.body.mobile
-                },
-                eventmangament:req.body.eventmangament,
-                cateringservices:req.body.cateringservices,
-                foodservice:req.body.foodservice
-               
-            };
-            delete newProfile.email;
-            delete newProfile.password;
-            
-            UserModel.findByIdAndUpdate(userId, newProfile, {new: true})
-            .then(() => res.sendStatus(200))
-            .catch(next)
-        })
     }
-    
 }

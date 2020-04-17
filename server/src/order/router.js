@@ -1,10 +1,10 @@
 import OrderController from './controller';
 
 const router = require('express').Router();
-
-router.get('/orders', (req, res)=>{
-    console.log("orders get called::");
-    res.send(req.orders);
-})
+// const fs = require('fs');
+// const dataPath = './orders.json';
+// console.log(dataPath);
+console.log("order router");
+router.get('/', OrderController.getAllOrders)
 
 export default router;

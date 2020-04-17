@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import '../app.scss';
+
 const Account = () => {
   const [editting, setEditting] = useState(false);
   const [passwordEditting, setPasswordEditting] = useState(false);
@@ -204,7 +205,7 @@ const Account = () => {
             {errMsg}
           </div>}
         </div>}
-        <div style={{ 'paddingTop': '30px' }}>
+        <div className="btn-half-width" style={{ 'paddingTop': '30px' }}>
           {renderButtons()}
         </div>
       </form>);
@@ -239,7 +240,7 @@ const Account = () => {
             disabled={!passwordEditting}
           />
         </div>
-        <div style={{ 'paddingTop': '30px' }}>
+        <div className="btn-half-width" style={{ 'paddingTop': '30px' }}>
           {renderPasswordButtons()}
         </div>
 
@@ -263,8 +264,8 @@ const Account = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
-        <Card className>
-          <div className='card'>
+        <Card className="eqHW">
+          <div className='card fullHeight'>
             <h4 className="card-header">
               Update Password
         </h4>
