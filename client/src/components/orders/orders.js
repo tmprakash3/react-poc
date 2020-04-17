@@ -1,50 +1,71 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
+import './order.scss';
+
+import { Card, CardContent, Typography, CardActions, Grid } from '@material-ui/core';
 
 class Orders extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            users: [],
+            orders: [],
             error: null
-        };    
+        };
     }
-    
+
     fetchProducts() {
         fetch('http://www.json-generator.com/api/json/get/bVkFRkdJQi?indent=2')
-        .then(response => response.json())
-        .then(data => this.setState({
-            users: data,
-            isLoading: false
-        }))
-        .catch(error => this.setState({error, isLoading: false}));
+            .then(response => response.json())
+            .then(data => this.setState({
+                orders: data,
+                isLoading: false
+            }))
+            .catch(error => this.setState({ error, isLoading: false }));
     }
+
+    // fetchOrders() {
+    //     const response = fetch('/orders');
+    //     const body = response.json();
+    //     if (response.status !== 200) throw Error(body.message);
+
+    //     return body;
+    // };
 
     componentDidMount() {
         this.fetchProducts();
     }
 
     render() {
-        const { isLoading, users, error } = this.state;
+        const { isLoading, orders, error } = this.state;
         return (
-            <div>
+            <Grid container direction="column" className="card">
                 {error ? <p>{error.message} </p> : null}
                 {!isLoading ? (
-                    users.map(user => {
+                    orders.map(user => {
                         const { username, name, email } = user;
                         return (
-                            <div key={user.index}>
-                            <p>Name: {name}</p>
-                            <p>Email Address: {email}</p>
-                            <hr />
-                          </div>
+                            <Card className="itemCard" key={user.index}>
+                                <CardContent>
+                                    <Grid item xs={12} md={12} >
+                                        <Grid >
+                                            <Typography gutterBottom variant="subtitle1">
+                                                {name}
+                                            </Typography>
+                                            <Typography variant="body2" gutterBottom>
+                                                {email}
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
                         )
                     })
+
                 ) : (
-                    <h3> Loading data...</h3>
-                )}
-            </div>
+                        <h3> Loading data...</h3>
+                    )}
+            </Grid>
         );
     }
 }

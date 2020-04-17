@@ -9,7 +9,7 @@
     border-right: 1px solid rgba(0,0,0,.1);
     order: 0;
     border-bottom: 1px solid rgba(0,0,0,.1);
-    background-color: #333;
+    // background-color: #333;
 }
 .list-items {
     padding: 8px 16px !important;
@@ -22,6 +22,10 @@
     color: #fff;
 }
 .list-items li a:hover {
+    color: #CAAD59;
+    text-decoration: none;
+}
+.list-items li a:active {
     color: #CAAD59;
     text-decoration: none;
 }

@@ -6,9 +6,10 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './config';
-import Middlewares from './api/middlewares'
-import Authentication from './api/authentication'
-import UserRouter from './user/router'
+import Middlewares from './api/middlewares';
+import Authentication from './api/authentication';
+import UserRouter from './user/router';
+import OrderRouter from './order/router';
 
 if(!process.env.JWT_SECRET) {
     const err = new Error('No JWT_SECRET in env variable, check instructions: https://github.com/amazingandyyy/mern#0a6b944d-d2fb-46fc-a85e-0295c986cd9f');
@@ -29,12 +30,13 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}));
-app.get('/ping', (req, res) => res.send('pong'))
-app.get('/', (req, res) => res.json({'source': 'https://github.com/amazingandyyy/mern'}))
-app.post('/signup', Authentication.signup)
-app.post('/signin', Authentication.signin)
-app.get('/auth-ping', Middlewares.loginRequired, (req, res) => res.send('connected'))
-app.use('/user', Middlewares.loginRequired, UserRouter)
+app.get('/ping', (req, res) => res.send('pong'));
+app.get('/', (req, res) => res.json({'source': 'https://github.com/amazingandyyy/mern'}));
+app.post('/signup', Authentication.signup);
+app.post('/signin', Authentication.signin);
+app.get('/auth-ping', Middlewares.loginRequired, (req, res) => res.send('connected'));
+app.use('/user', Middlewares.loginRequired, UserRouter);
+app.use('/orders', Middlewares.loginRequired, OrderRouter)
 
 app.use((err, req, res, next) => {
     console.log('Error:', err.message);

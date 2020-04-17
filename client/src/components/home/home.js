@@ -3,7 +3,7 @@ import msgImg from '../../assets/images/shoe-size-no-hash-white.svg'
 import './home.scss';
 import sidenav from '../sidenav/sidenav';
 
-export default class App extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div>
