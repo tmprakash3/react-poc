@@ -46,13 +46,13 @@ class Orders extends Component {
         console.log("orders in render method:");
         console.log(this.state);
         return (
-            <Grid container direction="column" className="order-card" >
+            <Grid direction="column" className="order-card" >
                 {error ? <p>{error.message} </p> : null}
                 {!isLoading ? (
                     orders.map((order, index) => {
                         // const { username, name, email } = user;
                         return (
-                            <Card className="itemCard" key={order.id} onClick={(order) => this.props.history.push('/orders/details/:id')}>
+                            <Card className="itemCard" key={order.id} onClick={(order) => this.props.history.push('/orders/details/:(order.id)')}>
                                 <CardContent>
                                     <Grid item xs={12} md={12} >
                                         <Typography gutterBottom variant="h6">
