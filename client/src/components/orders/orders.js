@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './order.scss';
 
-import { Card, CardContent, Typography, CardActions, Grid } from '@material-ui/core';
+import { Card, CardContent, Typography, Button, CardActions, Grid } from '@material-ui/core';
 import Axios from 'axios';
 
 class Orders extends Component {
@@ -13,6 +14,8 @@ class Orders extends Component {
             orders: [],
             error: null
         };
+        // this.goToDetailPage = this.goToDetailPage.bind(this, order);
+
     }
 
     fetchProducts() {
@@ -37,79 +40,97 @@ class Orders extends Component {
         this.fetchProducts();
     }
 
-    goToDetailPage(e) {
-        
+    goToDetailPage(order) {
         console.log("clicked on detail page");
-        console.log(e);
-        // (order) => this.props.history.push('/orders/details/:order.id')
+        console.log(order);
+        console.log(this.props);
     }
 
     render() {
-        const { isLoading, orders, error } = this.state;
-        console.log("orders in render method:");
-        console.log(this.state);
-        return (
-            <Grid direction="column" className="order-card" >
-                {error ? <p>{error.message} </p> : null}
-                {!isLoading ? (
-                    orders.map((order, index) => {
-                        // const { username, name, email } = user;
-                        return (
-                            <Card className="itemCard" key={order.id} onClick={goToDetailPage(this)}>
-                                <CardContent>
-                                    <Grid item xs={12} md={12} >
-                                        <Typography gutterBottom variant="h6">
-                                            {order.customer.first_name +' '+ order.customer.last_name}
-                                        </Typography>
-                                        <Typography gutterBottom variant="body1">
-                                            {order.email}
-                                        </Typography>
 
-                                        <Grid className="rowContent">
-                                            <Grid item xs={4}>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Phone: {order.phone}
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Created: {order.created_at}
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Payment Status: {order.financial_status == 'partially_refunded' ? 'Partially Refunded' : order.financial_status}
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={4}>
-                                                <Typography variant="body2" gutterBottom>
-                                                    OrderID: {order.id}
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Status: <span style={{color: order.fulfillments[0].status == 'failure' ? 'red': 'black'}}>{order.fulfillments[0].status}</span>
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Tracking: {order.fulfillments[0].tracking_number}
-                                                </Typography>
-                                            </Grid>
-                                            <Grid item xs={4}>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Subtotal: {order.currency + ' ' + order.subtotal_price}
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Tax: {order.currency + ' ' + order.total_tax}
-                                                </Typography>
-                                                <Typography variant="body2" gutterBottom>
-                                                    Total : {order.currency + ' ' + order.total_price}
-                                                </Typography>
+        const { isLoading, orders, error } = this.state;
+
+        return (
+            <div className="order-container">
+                <div className="appBar">
+                    <Grid
+                        container
+                        direction="row"
+                        justify="flex-end"
+                        alignItems="center"
+                    style={{padding: "5px 8px"}}>
+                        <Grid container item xs={8}>
+                            <Typography variant="h5">My Orders</Typography>
+                        </Grid>
+                        <Grid container item xs={4} className="order-btn">
+                            <Button variant="contained" color="primary">Create Service</Button>
+                        </Grid>
+                    </Grid>
+                </div>
+                <Grid direction="column" className="order-card" >
+                    {error ? <p>{error.message} </p> : null}
+                    {!isLoading ? (
+                        orders.map((order, index) => {
+                            // const { username, name, email } = user;
+                            return (
+                                <Card className="itemCard" key={order.id} onClick={this.goToDetailPage.bind(this, order)}>
+                                    <CardContent>
+                                        <Grid item xs={12} md={12} >
+                                            <Typography gutterBottom variant="h6">
+                                                {order.customer.first_name + ' ' + order.customer.last_name}
+                                            </Typography>
+                                            <Typography gutterBottom variant="body1">
+                                                {order.email}
+                                            </Typography>
+
+                                            <Grid className="rowContent">
+                                                <Grid item xs={4}>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Phone:</span> {order.phone}
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Created:</span> {order.created_at}
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Payment Status:</span> {order.financial_status == 'partially_refunded' ? 'Partially Refunded' : order.financial_status}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item xs={4}>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">OrderID:</span> {order.id}
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Status:</span> <span style={{ color: order.fulfillments[0].status.toLowerCase() == 'failure' ? 'red' : (order.fulfillments[0].status.toLowerCase() == 'success'? 'green' : 'black')}}>{order.fulfillments[0].status}</span>
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Tracking:</span> {order.fulfillments[0].tracking_number}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item xs={4}>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Subtotal:</span> {order.currency + ' ' + order.subtotal_price}
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Tax:</span>{order.currency + ' ' + order.total_tax}
+                                                    </Typography>
+                                                    <Typography variant="body2" gutterBottom>
+                                                        <span className="label">Total:</span> {order.currency + ' ' + order.total_price}
+                                                    </Typography>
+                                                    <Link to={`/details/${order.id}`}>Detail</Link>
+                                                </Grid>
                                             </Grid>
                                         </Grid>
-                                    </Grid>
-                                </CardContent>
-                            </Card>
-                        )
-                    })
+                                    </CardContent>
+                                </Card>
+                            )
+                        })
 
-                ) : (
-                        <h3> Loading data...</h3>
-                    )}
-            </Grid>
+                    ) : (
+                            <h3> Loading data...</h3>
+                        )}
+                </Grid>
+
+            </div>
         );
     }
 }

@@ -1,0 +1,16 @@
+.cardWidth   {
+    // max-width: 345px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    width: calc(100%/4);
+}
+.card-content {
+    margin: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.appBar {
+    margin-bottom: 16px;
+}

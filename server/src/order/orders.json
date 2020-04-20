@@ -541,7 +541,7 @@
         {
           "id": 255858046,
           "order_id": 450789469,
-          "status": "failure",
+          "status": "Failure",
           "created_at": "2020-04-06T10:51:36-04:00",
           "service": "manual",
           "updated_at": "2020-04-06T10:51:36-04:00",
@@ -1458,7 +1458,7 @@
         {
           "id": 255858046,
           "order_id": 450789469,
-          "status": "failure",
+          "status": "Failure",
           "created_at": "2020-04-06T10:51:36-04:00",
           "service": "manual",
           "updated_at": "2020-04-06T10:51:36-04:00",
@@ -2375,7 +2375,7 @@
         {
           "id": 255858046,
           "order_id": 450789469,
-          "status": "failure",
+          "status": "Success",
           "created_at": "2020-04-06T10:51:36-04:00",
           "service": "manual",
           "updated_at": "2020-04-06T10:51:36-04:00",

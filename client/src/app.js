@@ -14,6 +14,7 @@ import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
 import Orders from './components/orders/orders';
 import OrderDetailPage from './components/orders/detail';
+import Services from './components/services/services';
 import ProtectRouter from './components/auth/require_auth';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -44,7 +45,8 @@ ReactDOM.render(
           <Route path="/signup" component= {Signup} />
           <Route path="/signout" component= {Signout} />
           <Route path="/orders" component= {Orders} />
-          <Route path="/orders/details/:id" component={OrderDetailPage}/>
+          <Route path="/details/:id" component={OrderDetailPage}/>
+          <Route path="/services" component={Services} />
         </Switch>
       </App>
     </HashRouter>
