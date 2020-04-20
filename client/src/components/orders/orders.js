@@ -37,8 +37,11 @@ class Orders extends Component {
         this.fetchProducts();
     }
 
-    goDetailPage() {
-        console.log("clicked on detail page")
+    goToDetailPage(e) {
+        
+        console.log("clicked on detail page");
+        console.log(e);
+        // (order) => this.props.history.push('/orders/details/:order.id')
     }
 
     render() {
@@ -52,11 +55,11 @@ class Orders extends Component {
                     orders.map((order, index) => {
                         // const { username, name, email } = user;
                         return (
-                            <Card className="itemCard" key={order.id} onClick={(order) => this.props.history.push('/orders/details/:(order.id)')}>
+                            <Card className="itemCard" key={order.id} onClick={goToDetailPage(this)}>
                                 <CardContent>
                                     <Grid item xs={12} md={12} >
                                         <Typography gutterBottom variant="h6">
-                                            {order.customer.first_name + order.customer.last_name}
+                                            {order.customer.first_name +' '+ order.customer.last_name}
                                         </Typography>
                                         <Typography gutterBottom variant="body1">
                                             {order.email}

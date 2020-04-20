@@ -23,7 +23,9 @@ import '../style/style.scss';
 
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers)
+const store = createStoreWithMiddleware(reducers);
+console.log("store");
+console.log(store);
 const token = localStorage.getItem('auth_jwt_token');
 
 // if we have a token, consider the user to be signed in

@@ -112,7 +112,7 @@ const Account = () => {
     return (
       <form onSubmit={onSubmit}>
         <div className="row">
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-6 pr-8">
             <label>First Name:</label>
             <input
               disabled={!editting}
@@ -141,7 +141,7 @@ const Account = () => {
           </div>
         </div>
         <div className="row">
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-6 pr-8">
             <label>Email:</label>
             <input
               disabled
@@ -158,7 +158,6 @@ const Account = () => {
           <div className="form-group col-md-6">
             <label>Mobile Number:</label>
             <input
-
               disabled={!editting}
               type='number'
               name="mobile"
