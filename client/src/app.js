@@ -7,6 +7,7 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/app';
 import Home from './components/home/home';
+import Dashboard from './components/dashboard/dashboard';
 import Public from './components/public';
 import Account from './components/accounts/account';
 import Signin from './components/auth/signin';
@@ -39,6 +40,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component= {Home} />
+          <Route path="/dashboard" component= {Dashboard} />
           <Route path="/home" component= {Public} />
           <ProtectRouter path="/account" component= {Account} />
           <Route path="/signin" component= {Signin} />

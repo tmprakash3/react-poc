@@ -58,7 +58,7 @@ class Orders extends Component {
                         direction="row"
                         justify="flex-end"
                         alignItems="center"
-                    style={{padding: "5px 8px"}}>
+                    style={{padding: "8px 16px"}}>
                         <Grid container item xs={8}>
                             <Typography variant="h5">My Orders</Typography>
                         </Grid>

@@ -1,8 +1,11 @@
 .cardWidth   {
     // max-width: 345px;
-    margin-right: 16px;
+    margin-left: 16px;
     margin-bottom: 16px;
-    width: calc(100%/4);
+    width: 299px;
+}
+.cardWidth:first-child {
+    margin-left: 0;
 }
 .card-content {
     margin: 8px 16px;
@@ -12,5 +15,89 @@
     flex-wrap: wrap;
 }
 .appBar {
-    margin-bottom: 16px;
+    padding: 16px;
+}
+// .services-context {
+    
+// }
+.services-context h4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: center;
+    margin: 16px;
+}
+.service-content {
+    flex: 1 0 auto;
+    background: #fff;
+    position: relative;
+}
+.service-inner-content {
+    background: #F9F8FD;
+}
+.hero-img-container {
+    height: 480px;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-top: 0;
+    padding-bottom: 0;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.hero-text-content {
+    margin-top: 0;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 585px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.img-content {
+    width: auto;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 14px;
+}
+.hero-text-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 46px;
+}
+.hero-text-content p {
+    margin: 16px 0;
+}
+.hero-text-content a {
+    display: inline-block;
+    // padding: 10px 16px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    outline: none;
+    text-align: center;
+}
+.short-img {
+    background-image: url('https://cdn.dribbble.com/assets/art-banners/romainbriaux-9270a203743088cf36b939b04708d9a18fa794e04373964283a2d87c8f6fba0f.png');
+    width: 510px;
+    height: 360px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }

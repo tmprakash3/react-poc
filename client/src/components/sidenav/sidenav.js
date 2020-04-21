@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { List, ListItem, ListItemIcon, ListItemText, ListSubheader, Divider } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import PersonIcon from '@material-ui/icons/Person';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
@@ -69,6 +70,12 @@ class Sidenav extends Component {
                             <HomeIcon />
                         </ListItemIcon>
                         <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button component={Link} to="/dashboard">
+                        <ListItemIcon>
+                            <DashboardIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
                     </ListItem>
                     <ListItem button component={Link} to="/account">
                         <ListItemIcon>
