@@ -42,8 +42,6 @@ const Schema = new mongoose.Schema({
 Schema.pre('save', function(next){
     // get access to user model, then we can use user.email, user.password
     const user = this;
-    console.log(this)
-
     bcrypt.genSalt(10, function(err, salt){
         if (err) { return next(err) }
 

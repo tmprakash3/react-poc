@@ -3,7 +3,7 @@ import UserModel from '../user/model';
 
 export default {
     signup : (req, res, next) => {
-        const { email, password, firstName, lastName, mobile,eventmangament } = req.body;
+        const { email, password, firstName, lastName, mobile,eventmangament,cateringservices,foodservice } = req.body;
     
         if (!email || !password) {
             return res

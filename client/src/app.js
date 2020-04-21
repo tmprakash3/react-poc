@@ -46,8 +46,8 @@ ReactDOM.render(
           <Route path="/signin" component= {Signin} />
           <Route path="/signup" component= {Signup} />
           <Route path="/signout" component= {Signout} />
-          <Route path="/orders" component= {Orders} />
-          <Route path="/details/:id" component={OrderDetailPage}/>
+          <Route exact path="/orders" component= {Orders} />
+          <Route exact path="/orders/details/:id" component={OrderDetailPage}/>
           <Route path="/services" component={Services} />
         </Switch>
       </App>

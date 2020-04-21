@@ -13,8 +13,6 @@
   },
   "description": "",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
     "babel-plugin-transform-object-rest-spread": "6.26.0",

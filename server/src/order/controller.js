@@ -1,10 +1,9 @@
 const fs = require('fs');
 const dataPath = require('./orders.json');
-console.log(dataPath);
 
 export default {
     getAllOrders: (req, res) => {
-        console.log("getAllOrders called::");
+        //console.log("getAllOrders called::");
         res.send(dataPath);
         // console.log(res.send(dataPath));
         // fs.readFileSync('./orders.json', 'utf8', (err, data) => {

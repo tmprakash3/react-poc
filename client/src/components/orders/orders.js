@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import OrderDetailPage from './detail'
 import './order.scss';
 
 import { Card, CardContent, Typography, Button, CardActions, Grid } from '@material-ui/core';
@@ -116,7 +117,7 @@ class Orders extends Component {
                                                     <Typography variant="body2" gutterBottom>
                                                         <span className="label">Total:</span> {order.currency + ' ' + order.total_price}
                                                     </Typography>
-                                                    <Link to={`/details/${order.id}`}>Detail</Link>
+                                                    <Link to={`/orders/details/${order.id}`}>Detail</Link>
                                                 </Grid>
                                             </Grid>
                                         </Grid>
@@ -129,6 +130,7 @@ class Orders extends Component {
                             <h3> Loading data...</h3>
                         )}
                 </Grid>
+                
 
             </div>
         );
