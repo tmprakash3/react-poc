@@ -101,3 +101,16 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+.layout-padding {
+    padding: 24px;
+}
+.button-right-align {
+    display: flex;
+    justify-content: flex-end;
+}
+.mb-16 {
+    margin-bottom: 16px;
+}
+.mv-16 {
+    margin: 16px 0;
+}

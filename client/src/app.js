@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
 import App from './components/app';
@@ -16,6 +16,7 @@ import Signout from './components/auth/signout';
 import Orders from './components/orders/orders';
 import OrderDetailPage from './components/orders/detail';
 import Services from './components/services/services';
+import Createservice from './components/services/createservice';
 import ProtectRouter from './components/auth/require_auth';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
@@ -32,8 +33,29 @@ const token = localStorage.getItem('auth_jwt_token');
 
 // if we have a token, consider the user to be signed in
 if (token) {
-  store.dispatch({type: AUTH_USER})
+  store.dispatch({ type: AUTH_USER })
 }
+// const routing = (
+//   <Provider store={store}>
+//     <HashRouter hashType="noslash">
+//       <App>
+//         <Switch>
+//           <Route path="/" component={Home} />
+//           <Route path="/dashboard" component={Dashboard} />
+//           <Route path="/home" component={Public} />
+//           <ProtectRouter path="/account" component={Account} />
+//           <Route path="/signin" component={Signin} />
+//           <Route path="/signup" component={Signup} />
+//           <Route path="/signout" component={Signout} />
+//           <Route exact path="/orders" component={Orders} />
+//           <Route exact path="/orders/details/:id" component={OrderDetailPage} />
+//           <Route path="/services" component={Services} />
+//         </Switch>
+//       </App>
+//     </HashRouter>
+//   </Provider>
+// );
+
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter hashType="noslash">
@@ -48,7 +70,8 @@ ReactDOM.render(
           <Route path="/signout" component= {Signout} />
           <Route exact path="/orders" component= {Orders} />
           <Route exact path="/orders/details/:id" component={OrderDetailPage}/>
-          <Route path="/services" component={Services} />
+          <Route exact path="/services" component={Services} />
+          <Route exact path="/services/create" component={Createservice} />
         </Switch>
       </App>
     </HashRouter>
