@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
 import UserInformation from './userinformation';
 import ServicesProvided from './servicesprovided';
 import ServicesMenu from './menu';
@@ -29,12 +28,12 @@ function getSteps() {
   return ['User Information', 'Services Provided', 'Menu'];
 }
 
-function getStepContent(step) {
+function getStepContent(step, handleUserInfo) {
   switch (step) {
     case 0:
-      return <UserInformation />;
+      return <UserInformation handleUserInfo = {handleUserInfo} />;
     case 1:
-      return <ServicesProvided />;
+      return <ServicesProvided handleUserInfo = {handleUserInfo} />;
     case 2:
       return <ServicesMenu />;
     default:
@@ -90,8 +89,19 @@ export default function CreateService() {
     setActiveStep(0);
   };
 
+  const [user, setUser] = useState({});
+
+  const handleUserInfo = (e) => {
+    console.log("event Called");
+
+    const {name, value} = e.target;
+    console.log("name:" + name + "value:" +value);
+    setUser({...user, [name]:value});
+    console.log(user);
+  }
+
+
   const handleSubmit = (event) => {
-    
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
@@ -134,7 +144,7 @@ export default function CreateService() {
             </div>
           ) : (
               <div className="layout-padding">
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, handleUserInfo)}
                 <div className="button-right-align">
                   <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                     Previous

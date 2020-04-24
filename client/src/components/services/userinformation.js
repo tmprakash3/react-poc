@@ -7,9 +7,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
-export default function UserInformation() {
-
-    return (
+export default function UserInformation(props) {
+    console.log("props");
+    console.log(props);
+            return (
         <React.Fragment>
             <Typography variant="h5" gutterBottom>
                 User Information
@@ -23,6 +24,7 @@ export default function UserInformation() {
                         label="First name"
                         fullWidth
                         autoComplete="fname"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -33,6 +35,7 @@ export default function UserInformation() {
                         label="Last name"
                         fullWidth
                         autoComplete="lname"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -43,6 +46,7 @@ export default function UserInformation() {
                         label="Email"
                         fullWidth
                         autoComplete="email"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -53,6 +57,7 @@ export default function UserInformation() {
                         label="Phone Number"
                         fullWidth
                         autoComplete="phnumber"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -63,6 +68,7 @@ export default function UserInformation() {
                         label="Address line 1"
                         fullWidth
                         autoComplete="billing address-line1"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -72,6 +78,7 @@ export default function UserInformation() {
                         label="Address line 2"
                         fullWidth
                         autoComplete="billing address-line2"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -82,10 +89,17 @@ export default function UserInformation() {
                         label="City"
                         fullWidth
                         autoComplete="billing address-level2"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+                    <TextField 
+                    id="state" 
+                    name="state" 
+                    label="State/Province/Region" 
+                    fullWidth 
+                    onChange={props.handleUserInfo}
+                    />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -95,6 +109,7 @@ export default function UserInformation() {
                         label="Zip / Postal code"
                         fullWidth
                         autoComplete="billing postal-code"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -105,6 +120,7 @@ export default function UserInformation() {
                         label="Country"
                         fullWidth
                         autoComplete="billing country"
+                        onChange={props.handleUserInfo}
                     />
                 </Grid>
                 <Grid item xs={12}>

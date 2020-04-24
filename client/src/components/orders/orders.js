@@ -50,7 +50,7 @@ class Orders extends Component {
     render() {
 
         const { isLoading, orders, error } = this.state;
-
+        
         return (
             <div className="order-container">
                 <div className="appBar">
